@@ -37,7 +37,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       
       course.getCoursesMenu((success,navData)=>{
         //console.log(navData);
-        if(success){
+        if(success==true){
           // Router setup
           this.router = new CoreRouter(navData, {
             urlAdapter: new UrlParamAdapter()
