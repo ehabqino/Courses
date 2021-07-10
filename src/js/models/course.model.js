@@ -1,4 +1,4 @@
-define(['ojs/ojmodel'], 
+define(['ojs/ojModel'], 
     function() {
         class CourseModel{
             constructor(){
@@ -7,6 +7,14 @@ define(['ojs/ojmodel'],
             initializeModelCollection(endpoint){
 
             }//end initializeModelCollection
+            getCoursesMenu(notify){
+                let navData = [
+                    { path: '', redirect: 'dashboard' },
+                    { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } }
+                ];
+                notify(navData);
+                
+            }//getCoursesMenu
             
             getCoursesList(notify){
 
