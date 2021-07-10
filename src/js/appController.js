@@ -19,6 +19,8 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       // Handle announcements sent when pages change, for Accessibility.
       this.manner = ko.observable('polite');
       this.message = ko.observable();
+      this.showMenu = ko.observable(false);
+
       announcementHandler = (event) => {
           this.message(event.detail.message);
           this.manner(event.detail.manner);
@@ -33,10 +35,27 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       const mdQuery = ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.MD_UP);
       this.mdScreen = ResponsiveKnockoutUtils.createMediaQueryObservable(mdQuery);
       
-      course.getCoursesMenu((navData)=>{
-        console.log(navData);
+      course.getCoursesMenu((success,navData)=>{
+        //console.log(navData);
+        if(success){
+          // Router setup
+          this.router = new CoreRouter(navData, {
+            urlAdapter: new UrlParamAdapter()
+          });
+          this.router.sync();
+
+          this.moduleAdapter = new ModuleRouterAdapter(this.router);
+
+          this.selection = new KnockoutRouterAdapter(this.router);
+
+          // Setup the navDataProvider with the routes, excluding the first redirected
+          // route.
+          this.navDataProvider = new ArrayDataProvider(navData.slice(1), {keyAttributes: "path"});
+          this.showMenu(true);
+        }
       });
       
+      /*
       let navData = [
         { path: '', redirect: 'dashboard' },
         { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
@@ -58,7 +77,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       // Setup the navDataProvider with the routes, excluding the first redirected
       // route.
       this.navDataProvider = new ArrayDataProvider(navData.slice(1), {keyAttributes: "path"});
-
+      */
       // Drawer
       // Close offcanvas on medium and larger screens
       this.mdScreen.subscribe(() => {OffcanvasUtils.close(this.drawerParams);});

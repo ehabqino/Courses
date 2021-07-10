@@ -44,15 +44,16 @@ define(['ojs/ojModel'],
                                 });
                             }
                         });
-                        notify(navData);
-                        console.log("Success")
+                        notify(true,navData);
+                        //console.log("Success")
                         //console.log(data);
                         //console.log(data.result);
                         //console.log(navData);
                     },
                     error : (model, xhr, options)=> {
-                        console.log("Error");
-                        console.log(options);
+                        notify(false,"Error : " + xhr.textStatus);
+                        // console.log("Error");
+                        // console.log(options);
                     },
                     headers : {
                         'Authorization' : 'Basic cm9vdDpyb290cHdk',

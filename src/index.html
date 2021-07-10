@@ -36,22 +36,16 @@
           <p id="ariaLiveMessage"><oj-bind-text value="[[message]]"></oj-bind-text></p>
       </div>
 
-      <!--
-         ** Oracle JET V10.1.0 web application navigation drawer pattern.
-         ** Please see the demos under Cookbook/Patterns/App Shell: Web
-         ** and the CSS documentation under Support/API Docs/Non-Component Styling
-         ** on the JET website for more information on how to use this pattern.
-         ** The off-canvas section is used when the browser is resized to a smaller media
-         ** query size for a phone format and hidden until a user clicks on
-         ** the header hamburger icon.
-      -->
+    
       <div id="navDrawer" role="navigation" class="oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-start">
+      <oj-bind-if test="[[showMenu]]">
         <oj-navigation-list id="navDrawerList" data="[[navDataProvider]]"
                             edge="start"
                             item.renderer="[[KnockoutTemplateUtils.getRenderer('navTemplate', true)]]"
                             on-click="[[toggleDrawer]]"
                             selection="{{selection.path}}">
         </oj-navigation-list>
+      </oj-bind-if>
       </div>
       <div id="pageContent" class="oj-web-applayout-page">
         <!--
@@ -90,16 +84,20 @@
             </div>
           </div>
           <div role="navigation" class="oj-web-applayout-max-width oj-web-applayout-navbar">
+          <oj-bind-if test="[[showMenu]]">
             <oj-navigation-list id="navTabBar" class="oj-sm-only-hide oj-md-condense oj-md-justify-content-flex-end"
                                 data="[[navDataProvider]]"
                                 edge="top"
                                 item.renderer="[[KnockoutTemplateUtils.getRenderer('navTemplate', true)]]"
                                 selection="{{selection.path}}">
             </oj-navigation-list>
+          </oj-bind-if>
           </div>
         </header>
-        <oj-module role="main" class="oj-web-applayout-max-width oj-web-applayout-content" config="[[moduleAdapter.koObservableConfig]]">
-        </oj-module>
+        <oj-bind-if test="[[showMenu]]">
+          <oj-module role="main" class="oj-web-applayout-max-width oj-web-applayout-content" config="[[moduleAdapter.koObservableConfig]]">
+          </oj-module>
+        </oj-bind-if>
         <footer class="oj-web-applayout-footer" role="contentinfo">
           <div class="oj-web-applayout-footer-item oj-web-applayout-max-width">
             <ul>
