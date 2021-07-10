@@ -44,7 +44,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
         { path: 'customers', detail: { label: 'Customers', iconClass: 'oj-ux-ico-contact-group' } },
         { path: 'about', detail: { label: 'About', iconClass: 'oj-ux-ico-information-s' } }
       ];
-
+      
       // Router setup
       let router = new CoreRouter(navData, {
         urlAdapter: new UrlParamAdapter()
