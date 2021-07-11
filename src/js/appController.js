@@ -54,6 +54,12 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
           this.showMenu(true);
         }
       });
+
+      this.selectionChanged = (event)=>{
+        //console.log(event);
+        //console.log(event.detail.value)
+        console.log(event.detail.value.slice(-1));
+      };
       
       /*
       let navData = [

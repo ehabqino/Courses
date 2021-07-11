@@ -31,9 +31,10 @@ define(['ojs/ojModel'],
                 this.courseRow.fetch({
                     success : (coll,data)=>{
                         let navData = [
-                            { path: '', redirect: 'dashboard' },
-                            { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' }},
-                            { path: 'lessons', detail: { label: 'Course Lessons', iconClass: 'oj-ux-ico-bar-chart' }}
+                            { path: '', redirect: 'lessons' },
+                            { path: 'lessons', detail: { label: 'Course Lessons', iconClass: 'oj-ux-ico-bar-chart' }},
+                            { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' }}
+                            
                             
                         ];
 
