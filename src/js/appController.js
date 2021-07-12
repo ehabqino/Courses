@@ -55,7 +55,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
         }
       });
 
-      this.selectionChanged = (event)=>{
+      this.navSelectionChanged = (event)=>{
         //console.log(event);
         //console.log(event.detail.value)
         console.log(event.detail.value.slice(-1));
