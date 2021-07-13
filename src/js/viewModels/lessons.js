@@ -9,26 +9,29 @@
  * Your customer ViewModel code goes here
  */
 define(['ojs/ojcore','knockout','jquery','accUtils','utils/messageBroker',
-'ojs/ojarraydataprovider','ojs/ojlistview','ojs/ojlistitemlayout','ojs/ojactioncard'],
- function(oj,ko,$,accUtils,MsgBroker,ArrayDataProvider) {
-    function LessonsViewModel() {
+'ojs/ojarraydataprovider','models/lesson.model','ojs/ojlistview','ojs/ojlistitemlayout','ojs/ojactioncard'],
+ function(oj,ko,$,accUtils,MsgBroker,ArrayDataProvider,lessonModel) {
+    function LessonsViewModel () {
+      self = this;
+      self.allData = ko.observableArray([]);
+      self.selectedLessons = ko.observableArray([]);
+      self.lessonsDataProvider = new ArrayDataProvider(self.selectedLessons,{keyAttributes: '@rid'});
+
+      lessonModel.getLessonsList((success,data)=>{
+       // console.log(data.result);
+        if(success)
+            self.allData(data);
+            self.selectedLessons(self.allData());
+            self.selectedLessons.valueHasMutated();
+        
+      });
 
       MsgBroker.subscribe('Nav-URL-Changed',data => {
         console.log("Lesson Page filter by : " + data);
       });
 
       
-      // Below are a set of the ViewModel methods invoked by the oj-module component.
-      // Please reference the oj-module jsDoc for additional information.
-
-      /**
-       * Optional ViewModel method invoked after the View is inserted into the
-       * document DOM.  The application can put logic that requires the DOM being
-       * attached here.
-       * This method might be called multiple times - after the View is created
-       * and inserted into the DOM and after the View is reconnected
-       * after being disconnected.
-       */
+    
       this.connected = () => {
         accUtils.announce('Customers page loaded.', 'assertive');
         document.title = "Customers";
