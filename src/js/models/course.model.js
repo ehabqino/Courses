@@ -33,7 +33,7 @@ define(['ojs/ojModel'],
                         let navData = [
                             { path: '', redirect: 'lessons' },
                             { path: 'lessons', detail: { label: 'Course Lessons', iconClass: 'oj-ux-ico-bar-chart' }},
-                            { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' }}
+                            //{ path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' }}
                             
                             
                         ];

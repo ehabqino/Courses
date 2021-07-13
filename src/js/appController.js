@@ -59,8 +59,12 @@ define(['utils/messageBroker','models/course.model','knockout', 'ojs/ojcontext',
         //console.log(event);
         //console.log(event.detail.value)
         //console.log(event.detail.value.slice(-1));
-        MsgBroker.publish('Nav-URL-Changed',event.detail.value);
-      };
+        let page = event.detail.value;
+        if(page.indexOf("lessons")!=-1){
+          MsgBroker.publish('Nav-URL-Changed',page.substr(page.indexOf("/")+1));
+          //MsgBroker.publish('Nav-URL-Changed',page.slice(-1));
+          }
+        };
       
       /*
       let navData = [
