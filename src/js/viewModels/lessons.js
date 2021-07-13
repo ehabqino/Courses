@@ -8,8 +8,8 @@
 /*
  * Your customer ViewModel code goes here
  */
-define(['accUtils','utils/messageBroker'],
- function(accUtils,MsgBroker) {
+define(['ojs/ojcore','knockout','jquery','accUtils','utils/messageBroker'],
+ function(oj,ko,$,accUtils,MsgBroker) {
     function LessonsViewModel() {
 
       MsgBroker.subscribe('Nav-URL-Changed',data => {

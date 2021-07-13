@@ -1,11 +1,30 @@
-<!--
- Copyright (c) 2014, 2021, Oracle and/or its affiliates.
- Licensed under The Universal Permissive License (UPL), Version 1.0
- as shown at https://oss.oracle.com/licenses/upl/
- -->
+
 <div class="oj-hybrid-padding">
-  <h1>Lessons Content Area</h1>
-  <div>
-      To change the content of this section, you will make edits to the customers.html file located in the /js/views folder.
+  <h1>Lessons</h1>
+  <div class="demo-card-container" style="width: 100%">
+    <oj-list-view id="lessonsListView" display="card" data="[[lessonsdataprovider]]">
+      <template slot="itemTemplate" data-oj-as="row">
+        <li class="demo-card">
+          <oj-action-card>
+            <dl>
+              <dt>
+                <span><img :src="[[row.data.image]]"></span>
+                <span class="oj-text-color-primary lesson-title">
+                  <oj-bind-text value="[[row.data.title]]"></oj-bind-text>
+                </span>
+              </dt>
+              <br />
+              <dd>
+                  <span class="oj-text-color-primary lesson-content">
+                  <oj-bind-text value="[[row.data.lesson]]"></oj-bind-text>
+              </dd>
+            </dl>
+
+          </oj-action-card>
+        </li>
+      </template>
+
+    </oj-list-view>
+      
   </div>
 </div>
