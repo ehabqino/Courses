@@ -14,3 +14,18 @@
   height: 1px;
   overflow: hidden;
 }
+.lesson-title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.lesson-content {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 300;
+  font-size: large;
+  line-height: 1.6;
+}
+dd {
+  display: none;
+}
