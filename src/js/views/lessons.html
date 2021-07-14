@@ -5,7 +5,7 @@
     <oj-list-view id="lessonsListView" display="card" data="[[lessonsDataProvider]]">
       <template slot="itemTemplate" data-oj-as="row">
         <li class="demo-card">
-          <oj-action-card>
+          <oj-action-card :id="[[row.data.lessonid]]" on-oj-action="[[showLessonContent]]">
             <dl>
               <dt style="padding: 1px; width: 98%;">
                 <span><img :src="[[row.data.image]]" width="95%"/></span>

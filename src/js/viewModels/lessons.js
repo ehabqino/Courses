@@ -36,8 +36,13 @@ define(['ojs/ojcore','knockout','jquery','accUtils','utils/messageBroker',
           self.selectedLessons(self.allData());
         }
         self.selectedLessons.valueHasMutated();
-      });
+      });//end MsgBroker
 
+      self.showLessonContent= (event)=>{
+        console.log(event.currentTarget.id);
+        var id = "#" + event.currentTarget.id;
+        $(id).find("dd").slideToggle("slow");
+      };
       
     
       this.connected = () => {
