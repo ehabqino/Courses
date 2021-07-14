@@ -28,6 +28,14 @@ define(['ojs/ojcore','knockout','jquery','accUtils','utils/messageBroker',
 
       MsgBroker.subscribe('Nav-URL-Changed',data => {
         console.log("Lesson Page filter by : " + data);
+        
+        if(data != "lessons"){
+            self.selectedLessons(self.allData().filter(row => row.courseid == data));
+            
+        }else {
+          self.selectedLessons(self.allData());
+        }
+        self.selectedLessons.valueHasMutated();
       });
 
       
